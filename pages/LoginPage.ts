@@ -1,6 +1,5 @@
-import type { Locator, Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import BasePage from '../pages/BasePage.ts';
-import User from '../data/User.ts';
 import Credentials from '../data/Credentials.ts';
 
 export default class LoginPage extends BasePage {
@@ -17,19 +16,18 @@ export default class LoginPage extends BasePage {
     this.logInButton = this.page.locator('[data-test="login-button"]');
   }
 
-
-  public loginToApp = async(): Promise<void> => { 
+  public loginToApp = async (): Promise<void> => {
     await this.page.goto('https://www.saucedemo.com/');
     await this.usernameField.fill(Credentials.USER_IS_OK);
     await this.passwordField.fill(Credentials.PASS_IS_OK);
     await this.logInButton.click();
-}
+  }
 
-public loginToAppWith = async(username, password): Promise<void> => { 
-  await this.page.goto('https://www.saucedemo.com/');
-  await this.usernameField.fill(username);
-  await this.passwordField.fill(password);
-  await this.logInButton.click();
-}
+  public loginToAppWith = async (username, password): Promise<void> => {
+    await this.page.goto('https://www.saucedemo.com/');
+    await this.usernameField.fill(username);
+    await this.passwordField.fill(password);
+    await this.logInButton.click();
+  }
 
 }
