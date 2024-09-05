@@ -17,7 +17,7 @@ import InventoryPage from '../pages/InventoryPage.ts';
         const quantity = page.locator('[data-test="item-quantity"]');
         const removeBike = page.locator('[data-test="remove-sauce-labs-bike-light"]');
         const removeBackpack = page.locator('[data-test="remove-sauce-labs-backpack"]');
-        await inventoryPage.addProductBackpack(); // add (remove etc.)
+        await inventoryPage.addProductBackpack();
         await inventoryPage.addProductBikeLight();
         await inventoryPage.checkNumberOfProductsInShoppingCart("2");
         await inventoryPage.openCart();
