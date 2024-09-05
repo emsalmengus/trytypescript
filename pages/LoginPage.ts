@@ -8,6 +8,7 @@ export default class LoginPage extends BasePage {
   private usernameField: Locator;
   private passwordField: Locator;
   private logInButton: Locator;
+  private errorButton: Locator;
 
   constructor(page: Page) {
     super(page, 'Login');
