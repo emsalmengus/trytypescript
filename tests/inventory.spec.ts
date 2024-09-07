@@ -9,10 +9,10 @@ import InventoryPage from '../pages/InventoryPage.ts';
         loginPage = new LoginPage(page);
         inventoryPage = new InventoryPage(page);
         loginPage.loginToApp();
-        expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     });
 
     test('should add two products, display in cart and remove', async ({page}) => {
+        expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
         const price = page.locator('[data-test="inventory-item-price"]');
         const quantity = page.locator('[data-test="item-quantity"]');
         const removeBike = page.locator('[data-test="remove-sauce-labs-bike-light"]');
