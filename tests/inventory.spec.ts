@@ -8,8 +8,8 @@ import InventoryPage from '../pages/InventoryPage.ts';
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
         inventoryPage = new InventoryPage(page);
-        await loginPage.loginToApp();
-        await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+        loginPage.loginToApp();
+        expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     });
 
     test('should add two products, display in cart and remove', async ({page}) => {
@@ -21,15 +21,15 @@ import InventoryPage from '../pages/InventoryPage.ts';
         await inventoryPage.addProductBikeLight();
         await inventoryPage.checkNumberOfProductsInShoppingCart("2");
         await inventoryPage.openCart();
-        await expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
-        await expect(page.getByText('Your Cart')).toContainText('Your Cart');
-        await expect(page.getByText('Sauce Labs Backpack')).toContainText('Sauce Labs Backpack');
-        await expect(page.getByText('Sauce Labs Bike Light')).toContainText('Sauce Labs Bike Light');
-        await expect(price).toHaveCount(2);
-        await expect(quantity).toHaveCount(2);
+        expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
+        expect(page.getByText('Your Cart')).toContainText('Your Cart');
+        expect(page.getByText('Sauce Labs Backpack')).toContainText('Sauce Labs Backpack');
+        expect(page.getByText('Sauce Labs Bike Light')).toContainText('Sauce Labs Bike Light');
+        expect(price).toHaveCount(2);
+        expect(quantity).toHaveCount(2);
         await removeBackpack.click();
         await removeBike.click();
         await page.getByText('Continue Shopping').click();
-        await expect(page.getByText('Products')).toContainText('Products');
+        expect(page.getByText('Products')).toContainText('Products');
         await inventoryPage.checkNumberOfProductsInShoppingCart("");
     });
